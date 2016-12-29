@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trade - 24e</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+</head>
+<body class="body">
+<div class="trade-wrap">
+    <!--手机左侧滑栏-->
+    <div class="slide-left visible-xs hidden-md hidden-lg">
+        <div class="trade-login col-xs-12">
+            <input type="text" name="moblieuser" placeholder="用户名" class="col-lg-3 moblie-user" style="width: 88px" />
+            <input type="password" name="mobliepassword" placeholder="密码" class="col-lg-3 moblie-psd" style="width: 88px"/>
+            <a href="#" class="signIn col-lg-3" id="signIn">登錄</a>
+            <a href="#" class="signOut col-lg-3">註冊</a>
+        </div>
+        <div class="mobile-trade-btn">
+            <a href="#" class="trade-btn">交易</a>
+            <a href="#" class="mobile-short-btn"><!--<span class="glyphicon glyphicon-sort"></span>-->短期</a>
+            <a href="#" class="mobile-highLow-btn"><!--<span class="glyphicon glyphicon-resize-full"></span>-->漲跌</a>
+            <a href="#" class="mobile-one-btn">一觸式</a>
+            <a href="#" class="mobile-section-btn">區間</a>
+        </div>
+    </div>
+    <!--手机右侧滑栏-->
+    <div class="slide-right visible-xs hidden-md hidden-lg">
+        <div class="nowTime">
+            <span class="timeIcon glyphicon glyphicon-time"></span>
+            <span class="timeText"></span>
+            <a href="#" class="glyphicon glyphicon-remove fr slide-btn-right visible-xs hidden-lg hidden-md" style="padding-right: 20px;"></a>
+        </div>
+        <div class="trade-panel clearfix">
+            <div class="open active">未平仓</div>
+            <div class="trade-details">已平仓</div>
+            <!-- <div class="traded">已平倉交易</div> -->
+        </div>
+        <div class="trade-panel-info">
+            <!-- 未平仓 -->
+            <div class="open-countdown">
+               
+            </div>
+            <!-- 已平仓 -->
+            <div class="trade-dateals-content clearfix">
+                
+            </div>
+        </div>
+    </div>
+    <!--the main-->
+    <div class="row mainbody clearfix">
+        <!--moblie -silde-->
+        <div class="slide-container visible-xs hidden-md hidden-lg">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="trade-type-panel">
+                        <a href="#" class="active">短期</a>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="trade-type-panel">
+                        <a href="#">最低/最高</a>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="trade-type-panel">
+                        <a href="#">一触即付</a>
+                    </div>
+                </div>
+                <!-- asset-slide -->
+                <!-- <div class="asset-slide fl col-xs-5">
+                    <div class="asset-slide-head">EURUSD<span class="iconfont fr">&#xe60d;</span></div>
+                    <div class="asset-slide-list">
+                        <div class="row">
+                            <a href="#"><span>EURUSD</span></a>
+                            <a href="#"><span>EURJSP</span></a>
+                            <a href="#"><span>JSPCYN</span></a>
+                            <a href="#"><span>JSPGBP</span></a>
+                            <a href="#"><span>GBPUSD</span></a>
+                            <a href="#"><span>USDCYN</span></a>
+                            <a href="#"><span>CYNUSD</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-slide fr col-xs-5" style="margin-right: 15px;">
+                    <div class="asset-slide-head type-silde-head">60秒<span class="iconfont fr">&#xe60d;</span></div>
+                    <div class="asset-slide-list">
+                        <div class="row">
+                            <a href="#"><span>60秒</span></a>
+                            <a href="#"><span>120秒</span></a>
+                            <a href="#"><span>300秒</span></a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!--the left-->
+        <div class="chart-container clearfix">
+            <div class="header-left">
+                <a href="#" class="slide-btn-left glyphicon glyphicon-align-justify fl visible-xs hidden-lg hidden-md"></a>
+                <a href="#" class="logo">
+                    <div class="user-info fl" style="display: none;">
+                        <span class="uers-photo"></span>
+                        <span class="user-title">模拟账户</span>
+                        <span class="user-acount-panel">$<span class="user-acount" id="user-acount-moblie">1000.00</span></span>
+                        <span class="add-user-acount" style="color: green">+1000</span>
+                    </div>
+                </a>
+                <a href="#" class="glyphicon glyphicon-list-alt fr slide-btn-right visible-xs hidden-lg hidden-md"></a>
+            </div>
+            <!--chart-->
+            <div class="chart">
+                <!--chart-head-->
+                <div class="chart-head">
+<!--                     <div class="chart-question">
+    <p class="chart-question-text">
+        <span class="chart-question-name">欧元</span>是否
+        <span class="chart-question-high">高于</span> or
+        <span class="chart-question-low">低于</span>
+        <span class="chart-question-target">1.00534</span>在
+        <span class="chart-question-time">10:20:11</span>
+    </p>
+</div> -->
+                    <div class="chart-buttons">
+                        <div class="chart-buttons-title">图形设置</div>
+                        <div class="chart-buttons-move chart-button"><a href="#" title="切换图表" class="iconfont chart__link active">&#xe7a0;</a></div>
+                        <div class="chart-buttons-toggle chart-button"><a href="#" title="将价格移至当前图表" class="iconfont chart__link">&#xf004c;</a></div>
+                        <div class="chart-buttons-area chart-button"><a href="#" title="区域图" class="iconfont chart__link">&#xe803;</a></div>
+                        <div class="chart-buttons-candle chart-button"><a href="#" title="蜡烛图" class="iconfont chart__link">&#xe605;</a></div>
+                        <div class="chart-buttons-candle chart-button"><a href="#" title="放大" class="iconfont chart__link">&#xe66a;</a></div>
+                        <div class="chart-buttons-candle chart-button"><a href="#" title="缩小" class="iconfont chart__link">&#xe614;</a></div>
+                    </div>
+                </div>
+                <!--chart-body-->
+                <div class="chart-body" id="charts"></div>
+                <!--chart-title-->
+                <div class="chart-title">
+                    <span class="chart-title-name"></span>
+                    <span class="chart-title-content low">
+                        <span class="iconfont"></span>
+                        <span class="chart-title-value"></span>
+                    </span>
+                </div>
+            </div>
+            <!--trade-log-->
+            <div class="trade-log">
+                <div class="trade-log-head">
+                    <div class="trade-logs">
+                        <span class="log-wrap">
+                            <span class="logs-text">交易记录</span>
+                            (<span class="logs-num">0</span>)
+                        </span>
+                    </div>
+                    <div class="trade-news">
+                        <span class="news-text">新闻</span>
+                    </div>
+                </div>
+                <div class="trade-log-title">
+                        <div class="row">
+                            <div class="col-lg-1"><span>身份</span></div>
+                            <div class="col-lg-2"><span>期权</span></div>
+                            <div class="col-lg-1"><span>类型</span></div>
+                            <div class="col-lg-1"><span>资产</span></div>
+                            <div class="col-lg-1"><span>开盘时间</span></div>
+                            <div class="col-lg-1"><span>已投入</span></div>
+                            <div class="col-lg-1"><span>目标价格</span></div>
+                            <div class="col-lg-1"><span>到期时间</span></div>
+                            <div class="col-lg-1"><span>到期价格</span></div>
+                            <div class="col-lg-1"><span>到期类型</span></div>
+                            <div class="col-lg-1"><span>返回</span></div>
+                        </div>
+                </div>
+                <div class="trade-log-content">
+                    <!-- <div class="trade-log-list">
+                        <div class="row">
+                            <div class="col-lg-1"><span class="user-id">9298295</span></div>
+                            <div class="col-lg-2"><span class="option">短期</span></div>
+                            <div class="col-lg-1"><span class="type"><span style="color:#7cba05"><span class="button-icon iconfont" style="font-size:12px;">&#xe617;</span><span class="type">涨</span></span></span></div>
+                            <div class="col-lg-1"><span class="asset">EURUSD</span></div>
+                            <div class="col-lg-1"><span class="open-time">14:12:11</span></div>
+                            <div class="col-lg-1"><span class="acount">$25.00</span></div>
+                            <div class="col-lg-1"><span class="open-acount">1.0803310</span></div>
+                            <div class="col-lg-1"><span class="end-time">14:30:00</span></div>
+                            <div class="col-lg-1"><span class="end-acount">1.0783051</span></div>
+                            <div class="col-lg-1"><span class="end-type">关闭</span></div>
+                            <div class="col-lg-1"><span class="return">-</span></div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="dash-panel clearfix">
+            <div class="logon-panel">
+                <div class="dash-logon fl" >
+                    <input type="text" name="user" placeholder="用户名">
+                    <input type="password" name="password" placeholder="密码">
+                </div>
+                <div class="user-info fl" style="display: none;">
+                    <span class="user-title">模拟账户</span>
+                    <span class="user-acount-panel">$<span class="user-acount" id="user-acount">1000.00</span></span>
+                    <span class="add-user-acount">+1000</span>
+                </div>
+                <div class="logon-container fl">
+                    <div class="logon fl" id='logon'><a href="#">登录</a></div>
+                    <div class="sign-in fl"><a href="#">注册</a></div>
+
+                    <!--登录信息-->
+                    <div class="welcome fl"><a href="#"></a></div>
+                    <div class="logout fl"><a href="#">退出</a></div>
+                </div>
+                <div class="logo-container fl">
+                    <a href="#" class="logo">
+                        <img src="img/trade-logo-blue.png" class="logo-icon fl" alt="24e 云交易平台">
+                        <div class="logo-content fl">云交易</div>
+                    </a>
+                </div>
+            </div>
+            <div class="dash-body">
+                <div class="dash-head clearfix">
+                    <div class="fl dash-head-cul">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-fire head-icon active"></span>
+                            <span class="head-text">短期</span>
+                        </a>
+                    </div>
+                    <div class="fl dash-head-cul">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-sort head-icon"></span>
+                            <span class="head-text">最高/最低</span>
+                        </a>
+                    </div>
+                    <div class="fl dash-head-cul">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-open head-icon"></span>
+                            <span class="head-text">一触即付</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dash-content clearfix">
+                    <div class="dash-content-left fl">
+                        <div class="dash-content-head">
+                            <span class="dash-content-head-name">EURUS</span>
+                            <span class="dash-content-head-value">
+                                <span class="chart-title-content low">
+                                    <span class="iconfont"></span>
+                                    <span class="chart-title-value"></span>
+                                </span>
+                            </span>
+                        </div>
+                        <!--info-->
+                        <div class="trade-info clearfix">
+                            <!-- trade-info-amount -->
+                            <div class="trade-info-amount clearfix">
+                                <div class="amount-title">金额:</div>
+                                <div class="amount-dropdown fl">
+                                    <div class="amount-dropdown-panel">
+                                        <div class="change-value up-value fl glyphicon glyphicon-chevron-left"></div>
+                                        <input type="text" name="amount" value="$100" class="value fl">
+                                        <div class="change-value low-value fl glyphicon glyphicon-chevron-right"></div>
+                                    </div>
+                                </div>
+                                <div class="fl quick-add">
+                                    <span class="quick-add-btn">+10</span>
+                                    <span class="quick-add-btn">+50</span>
+                                    <span class="quick-add-btn">+100</span>
+                                </div>
+                            </div>
+                            <!-- trading-info -->
+                            <div class="trading-info-amount">
+                                <div class="amount-title">
+                                    <span class="amount-title-iconfont iconfont high">&#xe617;</span>
+                                    <span class="">认购</span>
+                                </div>
+                                <div class="amount-panel">
+                                    <div class="row">
+                                        <div class="amount-value fl col-lg-6">
+                                            <div class="amount-value-title">
+                                                金额:
+                                            </div>
+                                            <div class="amount-value-content">
+                                                <span class="amount-type">$</span>
+                                                <span class="amount-values"></span>
+                                            </div>
+                                        </div>
+                                        <div class="target-value fl col-lg-6">
+                                            <div class="target-value-title">
+                                                开仓价格:
+                                            </div>
+                                            <div class="trade-value-content">
+                                                <span class="trade-value-contents"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="target-time">
+                                    <div class="target-time-title">到期于:</div>
+                                    <div class="target-time-panel">
+                                        <span class="target-time-value"></span>
+                                    </div>
+                                </div>
+                                <div class="traget-money">
+                                    <div class="traget-money-title">目前结果:</div>
+                                    <div class="traget-money-panel high">
+                                        <span class="traget-money-type">$</span>
+                                        <span class="traget-money-value"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trade-info-time clearfix">
+                                <div class="time-title">到期时间:</div>
+                                <div class="time-sortcuts">
+                                    <div class="time-cul fl active">
+                                        <div class="time-value">60</div>
+                                        <div class="time-metric">秒</div>
+                                    </div>
+                                    <div class="time-cul fl">
+                                        <div class="time-value">120</div>
+                                        <div class="time-metric">秒</div>
+                                    </div>
+                                    <div class="time-cul fl">
+                                        <div class="time-value">300</div>
+                                        <div class="time-metric">秒</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trade-info-outcome clearfix">
+                                <div class="outcome-title">预期收益:</div>
+                                <div class="outcome-target">
+                                    $<span class="target-value" id="target-value">0</span>
+                                </div>
+                            </div>
+                            <div class="trade-buttons low-high-btn clearfix">
+                                <div class="trade-button hight-button fl" id="hight-button">
+                                    <span class="button-icon iconfont">&#xe617;</span>
+                                    <span class="type">涨</span>
+                                </div>
+                                <div class="trade-button low-button fl" id="low-butto">
+                                    <span class="button-icon iconfont">&#xe69f;</span>
+                                    <span class="type">跌</span>
+                                </div>
+                            </div>
+                            <div class="trade-buttons one-more">
+                                <span class="one-more-text">开立新仓</span>
+                            </div>
+                        </div>
+                        <div class="tarde-details clearfix">
+                            <div class="details-head">
+                                <span class="head-text">开立期权</span>
+                                (<span class="datail-nums">0</span>)
+                            </div>
+                            <div class="details-content">
+                                <!--the demo-->
+                                <!-- <div class="datails-list">
+                                    <div class="datails-list-title">
+                                        <div class="row">
+                                            <span class="datails-list-title-asset col-lg-4"><span class="glyphicon glyphicon-fire datails-list-title-asset-icon"></span><span>资产</span></span>
+                                            <span class="datails-list-title-overtime col-lg-4">结束时间</span>
+                                            <span class="datails-list-title-result col-lg-4">结果</span>
+                                        </div>
+                                    </div>
+                                    <div class="datails-list-value">
+                                        <div class="row">
+                                            <span class="datails-list-value-asset col-lg-4"><span class="iconfont high">&#xe617;</span><span class="datails-list-value-asset-name">EURUSD</span></span>
+                                            <span class="datails-list-value-overtime col-lg-4">00:00:00</span>
+                                            <span class="datails-list-value-result col-lg-4 high">$<span class="datails-list-value-result-value">10</span></span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-content-right fl">
+                        <div class="dash-content-head">
+                            <span class="dash-content-head-name">资产</span>
+                            <span class="now-time fr"></span>
+                        </div>
+                        <div class="asset-inner">
+                            <div class="inner-wrap clearfix">
+                                <div class="asset-cul exchange">
+                                    <div class="asset-cul-head">
+                                        <span class="iconfont asset-icon">&#xe609;</span>
+                                        <span class="asset-text">现货外汇</span>
+                                        <span class="asset-index"><span class="iconfont rotate-btn">&#xf004c;</span></span>
+                                    </div>
+                                    <div class="asset-cul-content active">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">EURUSD</span>
+                                            <span class="asset-cul-value low">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.07887</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont collected">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GPBUSD</span>
+                                            <span class="asset-cul-value low">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.26880</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">40</span>%
+                                            </span>
+                                            <span class="collect iconfont">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">USDJYP</span>
+                                            <span class="asset-cul-value high">
+                                                <span class="iconfont">&#xe60a;</span>
+                                                <span class="asset-cul-values">1.16581</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">75</span>%
+                                            </span>
+                                            <span class="collect iconfont">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="asset-cul stock">
+                                    <div class="asset-cul-head">
+                                        <span class="iconfont asset-icon">&#xe673;</span>
+                                        <span class="asset-text">股票</span>
+                                        <span class="asset-index"><span class="iconfont rotate-btn">&#xf004c;</span></span>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">AUDUSD</span>
+                                            <span class="asset-cul-value low">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.25108</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont collected">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">EURJSP</span>
+                                            <span class="asset-cul-value low">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.01783</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont collected">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="asset-cul stock-index">
+                                    <div class="asset-cul-head">
+                                        <span class="iconfont asset-icon">&#xe661;</span>
+                                        <span class="asset-text">股指</span>
+                                        <span class="asset-index"><span class="iconfont rotate-btn">&#xf004c;</span></span>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GBPJSP</span>
+                                            <span class="asset-cul-value low">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.83007</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GBPCHF</span>
+                                            <span class="asset-cul-value high">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.029941</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="asset-cul spot-contract">
+                                    <div class="asset-cul-head">
+                                        <span class="iconfont asset-icon">&#xe608;</span>
+                                        <span class="asset-text">现货商品</span>
+                                        <span class="asset-index"><span class="iconfont rotate-btn">&#xf004c;</span></span>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GBPCAD</span>
+                                            <span class="asset-cul-value low">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.029712</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">EURUSD</span>
+                                            <span class="asset-cul-value high">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.053782</span>
+                                            </span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="collect iconfont">&#xe612;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-trade-panel visible-xs hidden-md hidden-lg clearfix">
+            <div class="trade-info">
+                <!-- asset-slide-panel -->
+                <div class="asset-slide-panel">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="asset-slide">
+                                <a href="#" class="asset-slide-E">EURUSD</a>
+                            </div>
+                            <div class="asset-slide-container">
+                                <div class="asset-slide-lists">
+                                    <div class="asset-cul exchange">
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">EURUSD</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value low fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.07887</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GPBUSD</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">40</span>%
+                                            </span>
+                                            <span class="asset-cul-value low fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.26880</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">USDJYP</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">75</span>%
+                                            </span>
+                                            <span class="asset-cul-value high fr">
+                                                <span class="iconfont">&#xe60a;</span>
+                                                <span class="asset-cul-values">1.16581</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="asset-cul stock">
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">AUDUSD</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value low fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.25108</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">EURJSP</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value low fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.01783</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="asset-cul stock-index">
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GBPJSP</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value low fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.83007</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GBPCHF</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value high fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.029941</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="asset-cul spot-contract">
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">GBPCAD</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value low fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.029712</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="asset-cul-content">
+                                        <div class="asset-cul-list clearfix">
+                                            <span class="asset-cul-name">EURUSD</span>
+                                            <span class="asset-cul-rate">
+                                                <span class="rate-value">65</span>%
+                                            </span>
+                                            <span class="asset-cul-value high fr">
+                                                <span class="iconfont">&#xe60d;</span>
+                                                <span class="asset-cul-values">1.053782</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="asset-slide">
+                                <a href="#" class="asset-slide-M"><span>60</span>秒</a>
+                            </div>
+                            <div class="asset-slide-container1">
+                                <div class="time-sortcuts">
+                                    <div class="time-cul">
+                                        <div class="time-value">60秒</div>
+                                    </div>
+                                    <div class="time-cul">
+                                        <div class="time-value">120秒</div>
+                                    </div>
+                                    <div class="time-cul">
+                                        <div class="time-value">300秒</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- trade-info-amount -->
+                <div class="trade-info-amount clearfix">
+                    <div class="amount-dropdown fl">
+                        <div class="amount-dropdown-panel">
+                            <div class="change-value up-value fl glyphicon glyphicon-chevron-left"></div>
+                            <input type="text" name="amount" value="$100" class="value fl">
+                            <div class="change-value low-value fl glyphicon glyphicon-chevron-right"></div>
+                        </div>
+                    </div>
+                    <div class="fr quick-add">
+                        <span class="quick-add-btn">+10</span>
+                        <span class="quick-add-btn">+50</span>
+                        <span class="quick-add-btn">+100</span>
+                    </div>
+                </div>
+                <!-- trade-btn -->
+                <div class="trade-buttons low-high-btn clearfix">
+                    <div class="trade-button hight-button fl">
+                        <span class="button-icon iconfont">&#xe617;</span>
+                        <span class="type">涨</span>
+                        <p class="income-info">
+                            <span>预收益率</span>
+                            <span class="income-value">70%</span>
+                        </p>
+                    </div>
+                    <div class="trade-button income-info-panel fl">
+                        <p class="income-info-panel-title">收益</p>
+                        <p class="income-info-panel-value">
+                            <span class="target-title">$</span>
+                            <span class="target-value" id='mobile-target-value'>0.00</span>
+                        </p>
+                    </div>
+                    <div class="trade-button low-button fr">
+                        <span class="button-icon iconfont">&#xe69f;</span>
+                        <span class="type">跌</span>
+                        <p class="income-info">
+                            <span>预收益率</span>
+                            <span class="income-value">70%</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/layer.js"></script>
+    <script type="text/javascript" src="js/radialIndicator.min.js"></script>
+    <script type="text/javascript" src="js/countUp.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="js/highstock.js"></script>  
+</body>
+</html>
